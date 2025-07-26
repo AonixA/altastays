@@ -1412,7 +1412,276 @@ function optimizePerformance() {
         document.head.appendChild(link);
     });
 }
+/* OPCJONALNY JAVASCRIPT DLA DODATKOWYCH EFEKTÓW W SEKCJI SERVICES */
+/* DODAJ DO SWOJEGO PLIKU script.js LUB UTWÓRZ NOWY PLIK */
 
+// Funkcja do przełączania między emojis a ikonami Font Awesome
+function toggleServiceIcons() {
+    const services = [
+        { 
+            emoji: '📱', 
+            icon: 'fas fa-bullseye', 
+            class: 'marketing',
+            title: 'Marketing',
+            desc: 'Criamos anúncios otimizados nas principais plataformas para máxima visibilidade'
+        },
+        { 
+            emoji: '📸', 
+            icon: 'fas fa-camera', 
+            class: 'photography',
+            title: 'Fotografia',
+            desc: 'Fotos profissionais que destacam o melhor do seu imóvel'
+        },
+        { 
+            emoji: '🤝', 
+            icon: 'fas fa-users', 
+            class: 'guest-service',
+            title: 'Atendimento aos Hóspedes',
+            desc: 'Suporte 24/7 para garantir a melhor experiência dos seus hóspedes'
+        },
+        { 
+            emoji: '🛏️', 
+            icon: 'fas fa-tshirt', 
+            class: 'linens',
+            title: 'Roupa de Cama e Toalhas',
+            desc: 'Fornecemos e cuidamos de toda roupa de cama e banho premium'
+        },
+        { 
+            emoji: '✨', 
+            icon: 'fas fa-broom', 
+            class: 'cleaning',
+            title: 'Limpeza e Manutenção',
+            desc: 'Limpeza profissional e manutenção preventiva do seu imóvel'
+        },
+        { 
+            emoji: '💰', 
+            icon: 'fas fa-chart-line', 
+            class: 'pricing',
+            title: 'Gerenciamento de Preços',
+            desc: 'Otimização dinâmica de preços para máxima rentabilidade'
+        },
+        { 
+            emoji: '🎨', 
+            icon: 'fas fa-home', 
+            class: 'staging',
+            title: 'Home Staging',
+            desc: 'Design de interiores profissional para atrair mais hóspedes'
+        },
+        { 
+            emoji: '🛡️', 
+            icon: 'fas fa-shield-alt', 
+            class: 'insurance',
+            title: 'Garantia de Danos',
+            desc: 'Cobertura completa contra danos para sua tranquilidade'
+        }
+    ];
+
+    let isShowingEmojis = true;
+
+    return function() {
+        const serviceIcons = document.querySelectorAll('.service-icon');
+        
+        serviceIcons.forEach((iconContainer, index) => {
+            const service = services[index];
+            if (!service) return;
+
+            // Animação de saída
+            iconContainer.style.transform = 'scale(0) rotate(180deg)';
+            iconContainer.style.opacity = '0';
+
+            setTimeout(() => {
+                if (isShowingEmojis) {
+                    // Trocar para ícones Font Awesome
+                    iconContainer.innerHTML = `<i class="${service.icon}"></i>`;
+                } else {
+                    // Trocar para emojis
+                    iconContainer.innerHTML = `<span class="service-emoji">${service.emoji}</span>`;
+                }
+
+                // Animação de entrada
+                setTimeout(() => {
+                    iconContainer.style.transform = 'scale(1) rotate(0deg)';
+                    iconContainer.style.opacity = '1';
+                }, 50);
+            }, 300);
+        });
+
+        isShowingEmojis = !isShowingEmojis;
+    };
+}
+
+// Função para animar entrada dos cartões de serviço
+function animateServiceCards() {
+    const cards = document.querySelectorAll('.service-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        observer.observe(card);
+    });
+}
+
+// Função para adicionar efeito de partículas nos cartões
+function addParticleEffect() {
+    const cards = document.querySelectorAll('.service-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            createParticles(this);
+        });
+    });
+}
+
+function createParticles(element) {
+    const particles = 8;
+    const rect = element.getBoundingClientRect();
+    
+    for (let i = 0; i < particles; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-orange);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            left: ${rect.left + rect.width / 2}px;
+            top: ${rect.top + rect.height / 2}px;
+            animation: particleFloat 1s ease-out forwards;
+        `;
+        
+        // Direção aleatória para cada partícula
+        const angle = (360 / particles) * i;
+        const distance = 50 + Math.random() * 30;
+        const endX = rect.left + rect.width / 2 + Math.cos(angle * Math.PI / 180) * distance;
+        const endY = rect.top + rect.height / 2 + Math.sin(angle * Math.PI / 180) * distance;
+        
+        particle.style.setProperty('--end-x', endX + 'px');
+        particle.style.setProperty('--end-y', endY + 'px');
+        
+        document.body.appendChild(particle);
+        
+        // Remove particle after animation
+        setTimeout(() => {
+            if (particle.parentNode) {
+                particle.remove();
+            }
+        }, 1000);
+    }
+}
+
+// Função para efeito de hover nos emojis
+function enhanceEmojiHover() {
+    const emojis = document.querySelectorAll('.service-emoji');
+    
+    emojis.forEach(emoji => {
+        emoji.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.3) rotate(-10deg)';
+            this.style.filter = 'drop-shadow(0 6px 12px rgba(0,0,0,0.3))';
+        });
+        
+        emoji.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+            this.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))';
+        });
+    });
+}
+
+// Função principal de inicialização
+function initializeServiceEffects() {
+    // Animar cartões quando entrarem na visualização
+    animateServiceCards();
+    
+    // Adicionar efeitos de partículas
+    addParticleEffect();
+    
+    // Melhorar hover dos emojis
+    enhanceEmojiHover();
+    
+    // Criar função global para toggle (se necessário)
+    window.toggleServiceIcons = toggleServiceIcons();
+}
+
+// CSS adicional para partículas (adicionar ao CSS)
+const particleStyles = `
+    @keyframes particleFloat {
+        0% {
+            opacity: 1;
+            transform: translate(0, 0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(
+                calc(var(--end-x) - 50vw), 
+                calc(var(--end-y) - 50vh)
+            ) scale(0);
+        }
+    }
+`;
+
+// Adicionar estilos das partículas ao documento
+function addParticleStyles() {
+    const style = document.createElement('style');
+    style.textContent = particleStyles;
+    document.head.appendChild(style);
+}
+
+// Inicializar quando DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    initializeServiceEffects();
+    addParticleStyles();
+});
+
+// Opcional: Adicionar botão para alternar entre emojis e ícones
+function addToggleButton() {
+    const servicesSection = document.querySelector('.services .section-header');
+    if (servicesSection) {
+        const toggleButton = document.createElement('button');
+        toggleButton.innerHTML = '🔄 Alternar Ícones';
+        toggleButton.className = 'toggle-icons-btn';
+        toggleButton.style.cssText = `
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        `;
+        
+        toggleButton.addEventListener('click', window.toggleServiceIcons);
+        toggleButton.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px) scale(1.05)';
+            this.style.boxShadow = 'var(--shadow-glow)';
+        });
+        toggleButton.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.boxShadow = 'none';
+        });
+        
+        servicesSection.appendChild(toggleButton);
+    }
+}
+
+// Deskomentuj poniższą linię jeśli chcesz dodać przycisk toggle
+// addToggleButton();
 // Initialize performance optimizations
 document.addEventListener('DOMContentLoaded', optimizePerformance);
 
