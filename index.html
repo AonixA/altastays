@@ -1,16 +1,30 @@
-<!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AltaStays - Transforme seu imóvel em renda passiva</title>
     <meta name="description" content="Transformamos seu apartamento em renda passiva com operação completa de aluguel por temporada em São Paulo. Mais lucrativo que aluguel tradicional.">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    
+    <!-- Stylesheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Meta tags for better SEO and social sharing -->
+    <meta property="og:title" content="AltaStays - Transforme seu imóvel em renda passiva">
+    <meta property="og:description" content="Gestão completa de aluguel por temporada em São Paulo. Mais lucro, menos preocupação.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEwIDMwSDMwVjEwSDEwVjMwWiIgZmlsbD0iIzJENkE0RiIvPgo8cGF0aCBkPSJNMTUgMjVIMjVWMTVIMTVWMjVaIiBmaWxsPSIjRjU5RTBCIi8+Cjwvc3ZnPg==">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation with Enhanced Effects -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -19,8 +33,9 @@
             </div>
             <div class="nav-menu">
                 <a href="#inicio" data-translate="nav-home">Início</a>
-                <a href="#sobre" data-translate="nav-about">Sobre</a>
+                <a href="#comparacao" data-translate="nav-comparison">Resultados</a>
                 <a href="#servicos" data-translate="nav-services">Serviços</a>
+                <a href="#sobre" data-translate="nav-about">Sobre</a>
                 <a href="#processo" data-translate="nav-process">Processo</a>
                 <a href="#contato" data-translate="nav-contact">Contato</a>
                 <div class="language-toggle">
@@ -36,7 +51,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Spectacular Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-container">
             <div class="hero-content">
@@ -73,63 +88,96 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-  <img src="IG5.png" alt="AltaStays Hero" class="hero-img" />
-</div>
-</div>
-                <div class="hero-bg-elements">
+                    <img src="IG5.png" alt="AltaStays - Apartamento moderno para aluguel por temporada" class="hero-img" loading="lazy" />
+                </div>
+            </div>
+        </div>
+        
+        <!-- Enhanced Background Elements -->
+        <div class="hero-bg-elements">
             <div class="bg-circle bg-circle-1"></div>
             <div class="bg-circle bg-circle-2"></div>
-            <div class="bg-airplane"></div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="sobre" class="about">
+    <!-- Spectacular Before After Section - MOVED UP -->
+    <section id="comparacao" class="before-after">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 data-translate="about-title">Nossa História</h2>
-                    <p data-translate="about-p1">
-                        Há 7 anos, descobrimos a magia de receber pessoas em nosso apartamento no Airbnb. Foi incrível fazer parte da comunidade Airbnb e ver como cada hóspede trazia histórias únicas para nosso espaço.
-                    </p>
-                    <p data-translate="about-p2">
-                        Após anos de experiência e conquistas como Superhost, decidimos expandir e ajudar outros proprietários a transformar seus imóveis em fontes de renda passiva através do aluguel por temporada.
-                    </p>
-                    <p data-translate="about-p3">
-                        Hoje, a AltaStays gerencia propriedades em São Paulo e região, oferecendo serviço completo para que você tenha tranquilidade e lucro garantido.
-                    </p>
-                    <div class="about-founder">
-                        <div class="founder-info">
-                            <div class="founder-image">
-                                <!-- Placeholder for Marina's photo -->
-                                <div class="founder-placeholder">
-                                    <i class="fas fa-user"></i>
-                                </div>
+            <div class="section-header">
+                <h2 data-translate="ba-title">Mais Lucro, Menor Preocupação</h2>
+                <p data-translate="ba-subtitle">Veja a transformação que fazemos nos seus resultados</p>
+            </div>
+            <div class="comparison-container">
+                <div class="comparison-card">
+                    <div class="comparison-header before">
+                        <h3 data-translate="ba-before">Antes</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="property-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-home"></i>
+                                <span data-translate="ba-before-img">Imóvel básico</span>
                             </div>
-                            <div class="founder-details">
-                                <h3>Marina Muller</h3>
-                                <p data-translate="founder-title">Fundadora & Superhost Airbnb</p>
-                                <div class="superhost-badge">
-                                    <i class="fas fa-star"></i>
-                                    <span data-translate="superhost">Superhost</span>
-                                </div>
+                        </div>
+                        <div class="comparison-stats">
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-revenue">Receita mensal:</span>
+                                <span class="stat-value low">R$ 1.200</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-occupancy">Taxa de ocupação:</span>
+                                <span class="stat-value low">40%</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-rating">Avaliação:</span>
+                                <span class="stat-value low">3.8⭐</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="airbnb-stats">
-                        <div class="stat-card">
-                            <div class="stat-number">7+</div>
-                            <div class="stat-label" data-translate="stat-years">Anos de experiência</div>
+                <div class="comparison-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-header after">
+                        <h3 data-translate="ba-after">Depois</h3>
+                    </div>
+                    <div class="comparison-content">
+                        <div class="property-image">
+                            <div class="image-placeholder enhanced">
+                                <i class="fas fa-star"></i>
+                                <span data-translate="ba-after-img">Imóvel profissional</span>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">⭐</div>
-                            <div class="stat-label" data-translate="stat-superhost">Status Superhost</div>
+                        <div class="comparison-stats">
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-revenue">Receita mensal:</span>
+                                <span class="stat-value high">R$ 3.800</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-occupancy">Taxa de ocupação:</span>
+                                <span class="stat-value high">85%</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label" data-translate="ba-rating">Avaliação:</span>
+                                <span class="stat-value high">4.9⭐</span>
+                            </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label" data-translate="stat-guests">Hóspedes felizes</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <div class="testimonial-text">
+                        <p data-translate="testimonial-text">
+                            "Este foi um dos melhores anfitriões do Airbnb em que já me hospedei! O apartamento era lindo, confortável e muito limpo. A comunicação foi excelente!"
+                        </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Janaina</div>
+                            <div class="author-date">2024</div>
+                            <div class="rating">⭐⭐⭐⭐⭐</div>
                         </div>
                     </div>
                 </div>
@@ -137,11 +185,11 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Spectacular Services Section - MOVED UP -->
     <section id="servicos" class="services">
         <div class="container">
             <div class="section-header">
-                <h2 data-translate="services-title">Tu mieszkanie zarabia, Eu zajmujemy się resztą</h2>
+                <h2 data-translate="services-title">Seu apartamento ganha, Nós cuidamos do resto</h2>
                 <p data-translate="services-subtitle">Cuidamos de cada detalhe para maximizar sua renda</p>
             </div>
             <div class="services-grid">
@@ -205,86 +253,52 @@
         </div>
     </section>
 
-    <!-- Before After Section -->
-    <section class="before-after">
+    <!-- Enhanced About Section -->
+    <section id="sobre" class="about">
         <div class="container">
-            <div class="section-header">
-                <h2 data-translate="ba-title">Mais Lucro, Menor Preocupação</h2>
-                <p data-translate="ba-subtitle">Veja a transformação que fazemos nos seus resultados</p>
-            </div>
-            <div class="comparison-container">
-                <div class="comparison-card">
-                    <div class="comparison-header before">
-                        <h3 data-translate="ba-before">Antes</h3>
-                    </div>
-                    <div class="comparison-content">
-                        <div class="property-image">
-                            <!-- Placeholder for before image -->
-                            <div class="image-placeholder">
-                                <i class="fas fa-home"></i>
-                                <span data-translate="ba-before-img">Imóvel básico</span>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 data-translate="about-title">Nossa História</h2>
+                    <p data-translate="about-p1">
+                        Há 7 anos, descobrimos a magia de receber pessoas em nosso apartamento no Airbnb. Foi incrível fazer parte da comunidade Airbnb e ver como cada hóspede trazia histórias únicas para nosso espaço.
+                    </p>
+                    <p data-translate="about-p2">
+                        Após anos de experiência e conquistas como Superhost, decidimos expandir e ajudar outros proprietários a transformar seus imóveis em fontes de renda passiva através do aluguel por temporada.
+                    </p>
+                    <p data-translate="about-p3">
+                        Hoje, a AltaStays gerencia propriedades em São Paulo e região, oferecendo serviço completo para que você tenha tranquilidade e lucro garantido.
+                    </p>
+                    <div class="about-founder">
+                        <div class="founder-info">
+                            <div class="founder-image">
+                                <div class="founder-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="comparison-stats">
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-revenue">Receita mensal:</span>
-                                <span class="stat-value low">R$ 1.200</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-occupancy">Taxa de ocupação:</span>
-                                <span class="stat-value low">40%</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-rating">Avaliação:</span>
-                                <span class="stat-value low">3.8⭐</span>
+                            <div class="founder-details">
+                                <h3>Marina Muller</h3>
+                                <p data-translate="founder-title">Fundadora & Superhost Airbnb</p>
+                                <div class="superhost-badge">
+                                    <i class="fas fa-star"></i>
+                                    <span data-translate="superhost">Superhost</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="comparison-arrow">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-                <div class="comparison-card">
-                    <div class="comparison-header after">
-                        <h3 data-translate="ba-after">Depois</h3>
-                    </div>
-                    <div class="comparison-content">
-                        <div class="property-image">
-                            <!-- Placeholder for after image -->
-                            <div class="image-placeholder enhanced">
-                                <i class="fas fa-star"></i>
-                                <span data-translate="ba-after-img">Imóvel profissional</span>
-                            </div>
+                <div class="about-visual">
+                    <div class="airbnb-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label" data-translate="stat-years">Anos de experiência</div>
                         </div>
-                        <div class="comparison-stats">
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-revenue">Receita mensal:</span>
-                                <span class="stat-value high">R$ 3.800</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-occupancy">Taxa de ocupação:</span>
-                                <span class="stat-value high">85%</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-label" data-translate="ba-rating">Avaliação:</span>
-                                <span class="stat-value high">4.9⭐</span>
-                            </div>
+                        <div class="stat-card">
+                            <div class="stat-number">⭐</div>
+                            <div class="stat-label" data-translate="stat-superhost">Status Superhost</div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-content">
-                    <div class="testimonial-text">
-                        <p data-translate="testimonial-text">
-                            "Este foi um dos melhores anfitriões do Airbnb em que já me hospedei! O apartamento era lindo, confortável e muito limpo. A comunicação foi excelente!"
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-info">
-                            <div class="author-name">Janaina</div>
-                            <div class="author-date">2024</div>
-                            <div class="rating">⭐⭐⭐⭐⭐</div>
+                        <div class="stat-card">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label" data-translate="stat-guests">Hóspedes felizes</div>
                         </div>
                     </div>
                 </div>
@@ -292,29 +306,29 @@
         </div>
     </section>
 
-    <!-- Process Section -->
+    <!-- Compact Process Section - ONE ROW -->
     <section id="processo" class="process">
         <div class="container">
             <div class="section-header">
                 <h2 data-translate="process-title">Como Funciona</h2>
                 <p data-translate="process-subtitle">Processo simples em 3 etapas para começar a lucrar</p>
             </div>
-            <div class="process-steps">
-                <div class="step">
+            <div class="process-steps-horizontal">
+                <div class="step-horizontal">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3 data-translate="step1-title">Contato e Avaliação</h3>
                         <p data-translate="step1-desc">Entre em contato conosco e faremos uma avaliação gratuita do potencial de rentabilidade do seu imóvel</p>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step-horizontal">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3 data-translate="step2-title">Contrato e Preparação</h3>
                         <p data-translate="step2-desc">Assinamos o contrato e assumimos o controle total: fotos profissionais, anúncios e home staging</p>
                     </div>
                 </div>
-                <div class="step">
+                <div class="step-horizontal">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3 data-translate="step3-title">Renda Passiva</h3>
@@ -352,7 +366,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Enhanced Contact Section -->
     <section id="contato" class="contact">
         <div class="container">
             <div class="contact-content">
@@ -393,15 +407,15 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required data-translate-placeholder="form-name">
+                            <input type="text" id="name" name="name" required>
                             <label for="name" data-translate="form-name">Nome completo</label>
                         </div>
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required data-translate-placeholder="form-email">
+                            <input type="email" id="email" name="email" required>
                             <label for="email" data-translate="form-email">Email</label>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required data-translate-placeholder="form-phone">
+                            <input type="tel" id="phone" name="phone" required>
                             <label for="phone" data-translate="form-phone">Telefone</label>
                         </div>
                         <div class="form-group">
@@ -415,7 +429,7 @@
                             <label for="property-type" data-translate="form-property-type">Tipo de imóvel</label>
                         </div>
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" data-translate-placeholder="form-message"></textarea>
+                            <textarea id="message" name="message" rows="4"></textarea>
                             <label for="message" data-translate="form-message">Mensagem (opcional)</label>
                         </div>
                         <button type="submit" class="btn-primary" data-translate="form-submit">
@@ -427,7 +441,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -482,7 +496,8 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Include Enhanced Styles and Scripts -->
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
 </body>
 </html>
