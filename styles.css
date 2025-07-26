@@ -646,13 +646,14 @@ a, button {
 }
 
 .founder-image {
-    width: 70px; /* Reduced from 100px */
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid var(--accent-orange); /* Reduced from 4px */
+    border: 3px solid var(--accent-orange);
     box-shadow: var(--shadow-glow);
     animation: pulse 3s ease-in-out infinite;
+    flex-shrink: 0;
 }
 
 .founder-image img {
