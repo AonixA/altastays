@@ -3230,4 +3230,174 @@ html {
     color: #991B1B;
     box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
 }
+    /* ===== POPRAWKA DLA EMOJIS W SEKCJI SERVICES ===== */
+/* DODAJ TEN KOD NA KONIEC SWOJEGO PLIKU styles.css */
+
+/* Aktualizacja ikon - obsługa zarówno Font Awesome jak i emojis */
+.service-icon {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto var(--spacing-md) !important;
+    box-shadow: var(--shadow-lg) !important;
+    transition: all 0.4s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Style dla emojis */
+.service-emoji {
+    font-size: 2.5rem !important;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)) !important;
+    transition: all 0.3s ease !important;
+    user-select: none !important;
+    line-height: 1 !important;
+    display: block !important;
+}
+
+/* Hover effects dla emojis */
+.service-card:hover .service-emoji {
+    transform: scale(1.2) rotate(-5deg) !important;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2)) !important;
+}
+
+/* Fallback dla Font Awesome icons */
+.service-icon i {
+    font-size: 2rem !important;
+    color: white !important;
+    z-index: 2 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.service-card:hover .service-icon i {
+    transform: scale(1.1) !important;
+}
+
+/* Kolory gradientów dla każdego typu serwisu */
+.service-icon.marketing {
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8) !important;
+}
+
+.service-icon.photography {
+    background: linear-gradient(135deg, #F59E0B, #D97706) !important;
+}
+
+.service-icon.guest-service {
+    background: linear-gradient(135deg, #10B981, #047857) !important;
+}
+
+.service-icon.linens {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED) !important;
+}
+
+.service-icon.cleaning {
+    background: linear-gradient(135deg, #06B6D4, #0891B2) !important;
+}
+
+.service-icon.pricing {
+    background: linear-gradient(135deg, #EF4444, #DC2626) !important;
+}
+
+.service-icon.staging {
+    background: linear-gradient(135deg, #F97316, #EA580C) !important;
+}
+
+.service-icon.insurance {
+    background: linear-gradient(135deg, #6366F1, #4F46E5) !important;
+}
+
+/* Animacja shimmer dla hover */
+.service-icon::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent) !important;
+    transform: rotate(45deg) !important;
+    transition: all 0.6s ease !important;
+    opacity: 0 !important;
+}
+
+.service-card:hover .service-icon::before {
+    opacity: 1 !important;
+    animation: shimmer 1.5s ease-in-out infinite !important;
+}
+
+/* Animacja shimmer */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+/* Hover effects dla całego card */
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg) !important;
+    box-shadow: var(--shadow-glow) !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .service-icon {
+        width: 60px !important;
+        height: 60px !important;
+    }
+
+    .service-emoji {
+        font-size: 2rem !important;
+    }
+
+    .service-icon i {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-icon {
+        width: 50px !important;
+        height: 50px !important;
+        margin-bottom: var(--spacing-sm) !important;
+    }
+
+    .service-emoji {
+        font-size: 1.75rem !important;
+    }
+
+    .service-icon i {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* Debug - sprawdź czy emoji się ładują */
+.service-emoji:before {
+    content: attr(data-debug) !important;
+}
+
+/* Upewnij się, że emoji są widoczne */
+.service-emoji {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Dodatkowe style dla lepszego wyświetlania emoji */
+.service-card .service-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+/* Fixes dla możliwych konfliktów */
+.service-icon * {
+    pointer-events: none !important;
+}
 }
