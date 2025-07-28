@@ -3274,83 +3274,106 @@ html {
     visibility: visible !important;
     font-size: 2.5rem !important;
 }
-    /* DODATKOWE STYLE DLA ULEPSZONEGO FORMULARZA - DODAJ DO styles.css */
+    /* UPROSZCZONE STYLE FORMULARZA - DODAJ DO styles.css (ZASTĄP POPRZEDNIE STYLE FORM) */
 
-/* Enhanced Form Field Styling */
-.form-group {
+/* Compact Contact Form Styles */
+.contact-form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(30px);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-2xl);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 50px rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     position: relative;
-    margin-bottom: var(--spacing-xl);
+    overflow: hidden;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
+.contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(82, 183, 136, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    animation: gradientShift 10s ease-in-out infinite;
+}
+
+/* Form Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-field {
+    position: relative;
+}
+
+.form-field.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Input Styles */
+.form-field input,
+.form-field select,
+.form-field textarea {
     width: 100%;
-    padding: var(--spacing-lg) var(--spacing-lg);
-    padding-top: calc(var(--spacing-lg) + 8px); /* Extra space for floating label */
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    padding: var(--spacing-md);
+    border: 2px solid rgba(45, 106, 79, 0.2);
     background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     font-size: var(--font-size-base);
     font-weight: 500;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: 2;
+    transition: all 0.3s ease;
     font-family: var(--font-family);
+    color: var(--dark-text);
 }
 
-/* Floating Label Styles */
-.form-group label {
-    position: absolute;
-    top: var(--spacing-lg);
-    left: var(--spacing-lg);
-    background: transparent;
-    color: var(--gray-text);
-    font-size: var(--font-size-base);
-    font-weight: 600;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-    z-index: 3;
-    padding: 0 4px;
-    transform-origin: left top;
-}
-
-/* Active/Focus States for Floating Labels */
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label,
-.form-group select:focus + label,
-.form-group select:not([value=""]):valid + label,
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-    top: -8px;
-    left: calc(var(--spacing-md) + 4px);
-    font-size: 12px;
-    background: white;
-    color: var(--accent-orange);
-    padding: 2px 6px;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
-    transform: scale(0.9);
-    font-weight: 700;
-}
-
-/* Focus States */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
     outline: none;
     border-color: var(--accent-orange);
     background: white;
-    box-shadow: 
-        0 0 0 4px rgba(245, 158, 11, 0.1),
-        0 8px 25px rgba(245, 158, 11, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    transform: translateY(-1px);
 }
 
-/* Select Field Specific Styling */
-.form-group select {
+/* Labels */
+.form-field label {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    background: white;
+    color: var(--gray-text);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    padding: 0 4px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    transform-origin: left center;
+}
+
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label,
+.form-field input:valid + label {
+    top: -8px;
+    left: var(--spacing-sm);
+    font-size: 12px;
+    color: var(--accent-orange);
+    transform: scale(0.9);
+}
+
+/* Select Fields */
+.form-field select {
     cursor: pointer;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236B7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
@@ -3360,187 +3383,224 @@ html {
     padding-right: 40px;
 }
 
-.form-group select:focus {
+.form-field select:focus {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23F59E0B' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
 }
 
-/* Select Options Styling */
-.form-group select option {
+.form-field select option {
     background: white;
     color: var(--dark-text);
-    padding: 10px;
-    font-weight: 500;
+    padding: 8px;
 }
 
-.form-group select option:hover,
-.form-group select option:checked {
-    background: var(--light-cream);
-    color: var(--primary-green);
-}
-
-/* Textarea Specific Styling */
-.form-group textarea {
+/* Textarea */
+.form-field textarea {
     resize: vertical;
-    min-height: 120px;
-    line-height: 1.6;
+    min-height: 80px;
+    line-height: 1.5;
 }
 
-/* Placeholder Hidden (for floating label effect) */
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: transparent;
+.form-field textarea::placeholder {
+    color: var(--gray-text);
+    font-style: italic;
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background: var(--gradient-primary);
+    color: white;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(45, 106, 79, 0.3),
+        0 0 20px rgba(82, 183, 136, 0.2);
+    margin-top: var(--spacing-md);
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+        0 15px 40px rgba(45, 106, 79, 0.4),
+        0 0 30px rgba(82, 183, 136, 0.4);
+}
+
+.btn-submit:hover::before {
+    left: 100%;
+}
+
+.btn-submit:hover i {
+    transform: translateX(5px);
+}
+
+.btn-submit i {
+    transition: transform 0.3s ease;
 }
 
 /* Error States */
-.form-group input.error,
-.form-group select.error,
-.form-group textarea.error {
+.form-field input.error,
+.form-field select.error,
+.form-field textarea.error {
     border-color: #EF4444;
     background: rgba(239, 68, 68, 0.05);
     animation: shake 0.5s ease-in-out;
-    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
 }
 
-.form-group input.error + label,
-.form-group select.error + label,
-.form-group textarea.error + label {
+.form-field input.error + label {
     color: #EF4444;
-    background: rgba(239, 68, 68, 0.1);
 }
 
 .field-error {
     color: #EF4444;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
     font-weight: 600;
-    animation: slideInUp 0.3s ease-out;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.25rem;
 }
 
 .field-error::before {
     content: '⚠️';
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 
 /* Success States */
-.form-group input.success,
-.form-group select.success,
-.form-group textarea.success {
+.form-field input.success,
+.form-field select.success,
+.form-field textarea.success {
     border-color: #10B981;
     background: rgba(16, 185, 129, 0.05);
-    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
 }
 
-.form-group input.success + label,
-.form-group select.success + label,
-.form-group textarea.success + label {
+.form-field input.success + label {
     color: #10B981;
-    background: rgba(16, 185, 129, 0.1);
 }
 
-/* Form Group Focus Effect */
-.form-group:focus-within {
-    transform: scale(1.01);
+/* Form Messages */
+.form-message {
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+    animation: slideInUp 0.5s ease-out;
 }
 
-/* Required Field Indicator */
-.form-group input[required] + label::after,
-.form-group select[required] + label::after,
-.form-group textarea[required] + label::after {
-    content: '*';
-    color: #EF4444;
-    margin-left: 4px;
-    font-weight: 700;
+.form-message.success {
+    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    color: #065F46;
+    border: 1px solid #6EE7B7;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        padding: var(--spacing-md);
-        padding-top: calc(var(--spacing-md) + 6px);
-        font-size: 16px; /* Prevents zoom on iOS */
-    }
-    
-    .form-group label {
-        top: var(--spacing-md);
-        left: var(--spacing-md);
-        font-size: 14px;
-    }
-    
-    .form-group input:focus + label,
-    .form-group input:not(:placeholder-shown) + label,
-    .form-group select:focus + label,
-    .form-group select:not([value=""]):valid + label,
-    .form-group textarea:focus + label,
-    .form-group textarea:not(:placeholder-shown) + label {
-        top: -6px;
-        left: calc(var(--spacing-sm) + 4px);
-        font-size: 11px;
-    }
-    
-    .form-group {
-        margin-bottom: var(--spacing-lg);
-    }
+.form-message.error {
+    background: linear-gradient(135deg, #FEE2E2, #FECACA);
+    color: #991B1B;
+    border: 1px solid #F87171;
 }
 
-@media (max-width: 480px) {
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-        padding: var(--spacing-sm);
-        padding-top: calc(var(--spacing-sm) + 6px);
-    }
-    
-    .form-group label {
-        top: var(--spacing-sm);
-        left: var(--spacing-sm);
-    }
-    
-    .form-group input:focus + label,
-    .form-group input:not(:placeholder-shown) + label,
-    .form-group select:focus + label,
-    .form-group select:not([value=""]):valid + label,
-    .form-group textarea:focus + label,
-    .form-group textarea:not(:placeholder-shown) + label {
-        top: -6px;
-        left: calc(var(--spacing-xs) + 4px);
-    }
-}
-
-/* Form Validation Helper Text */
-.form-helper {
-    font-size: 0.75rem;
-    color: var(--gray-text);
-    margin-top: 0.25rem;
-    opacity: 0.8;
-}
-
-.form-helper.show {
-    opacity: 1;
-    animation: slideInUp 0.3s ease-out;
-}
-
-/* Loading State for Submit Button */
-.contact-form button[type="submit"]:disabled {
+/* Loading State */
+.btn-submit:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
 }
 
-.contact-form button[type="submit"]:disabled:hover {
+.btn-submit:disabled:hover {
     transform: none;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 
+        0 10px 30px rgba(45, 106, 79, 0.3),
+        0 0 20px rgba(82, 183, 136, 0.2);
 }
 
-/* Improved Accessibility */
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: 2px solid var(--accent-orange);
-    outline-offset: 2px;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: var(--spacing-lg);
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        padding: var(--spacing-sm);
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .form-field label {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+    }
+
+    .form-field input:focus + label,
+    .form-field input:not(:placeholder-shown) + label,
+    .form-field input:valid + label {
+        top: -6px;
+        left: var(--spacing-xs);
+    }
+
+    .btn-submit {
+        padding: var(--spacing-md) var(--spacing-lg);
+        font-size: var(--font-size-base);
+    }
 }
+
+@media (max-width: 480px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .contact-info {
+        order: 2;
+        text-align: center;
+    }
+
+    .contact-form {
+        order: 1;
+        padding: var(--spacing-md);
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .form-field textarea {
+        min-height: 60px;
+    }
+}
+
+/* Animation for shake effect */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
