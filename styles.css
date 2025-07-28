@@ -3604,3 +3604,82 @@ html {
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
 }
+    /* POPRAWKA LINII W SEKCJI PORÓWNANIA - DODAJ DO styles.css */
+
+/* Fix for comparison section line/arrow */
+.comparison-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-secondary);
+    border-radius: 50%;
+    color: white;
+    font-size: var(--font-size-xl);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    z-index: 3;
+    position: relative;
+}
+
+.comparison-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-glow);
+}
+
+.comparison-arrow i {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Mobile fixes for comparison section */
+@media (max-width: 768px) {
+    .comparison-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        position: relative;
+    }
+
+    .comparison-arrow {
+        order: 2;
+        transform: rotate(90deg);
+        justify-self: center;
+        margin: var(--spacing-md) 0;
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-size-lg);
+    }
+
+    /* Hide any potential lines or pseudo-elements */
+    .comparison-container::before,
+    .comparison-container::after {
+        display: none !important;
+    }
+
+    .before-after::before {
+        opacity: 0.1 !important;
+    }
+}
+
+/* Ensure no unwanted lines appear */
+.comparison-card {
+    position: relative;
+    z-index: 2;
+}
+
+.comparison-card::before,
+.comparison-card::after {
+    z-index: 1;
+}
+
+/* Additional cleanup for any stray elements */
+.before-after .container > *:not(.section-header):not(.comparison-container):not(.testimonial) {
+    display: none;
+}
+
+/* Make sure testimonial has proper spacing */
+.testimonial {
+    margin-top: var(--spacing-xl);
+    position: relative;
+    z-index: 2;
+}
