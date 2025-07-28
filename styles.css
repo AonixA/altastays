@@ -3683,3 +3683,415 @@ html {
     position: relative;
     z-index: 2;
 }
+    /* OPTYMALIZACJE MOBILNE - DODAJ NA KOŃCU styles.css */
+
+/* Mobile Navigation Fix */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    gap: 4px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-green);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: var(--spacing-xl) var(--spacing-md);
+        gap: var(--spacing-lg);
+        transform: translateY(-100vh);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+    }
+
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+
+    .nav-menu a {
+        font-size: var(--font-size-lg);
+        padding: var(--spacing-md);
+        text-align: center;
+        border-radius: var(--radius-lg);
+    }
+
+    .language-toggle {
+        justify-content: center;
+        margin-top: var(--spacing-md);
+    }
+}
+
+/* Enhanced Mobile Typography */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+        text-align: center;
+        padding: 0 var(--spacing-md);
+    }
+
+    .service-card h3 {
+        font-size: 1.125rem;
+        line-height: 1.3;
+    }
+
+    .service-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .section-header h2 {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+
+    .section-header p {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* Touch-Friendly Buttons */
+@media (max-width: 768px) {
+    .btn-primary,
+    .btn-whatsapp,
+    .contact-method {
+        min-height: 48px;
+        touch-action: manipulation;
+    }
+
+    .social-link {
+        width: 48px;
+        height: 48px;
+        min-height: 48px;
+    }
+
+    .lang-btn {
+        min-height: 40px;
+        min-width: 50px;
+    }
+}
+
+/* Mobile-First Hero Section */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh;
+        padding-top: 100px;
+        text-align: center;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        padding: 0 var(--spacing-md);
+    }
+
+    .hero-text {
+        order: 1;
+    }
+
+    .hero-visual {
+        order: 2;
+        height: 300px;
+        margin-top: var(--spacing-lg);
+    }
+
+    .hero-img {
+        max-width: 280px;
+        max-height: 280px;
+    }
+
+    .hero-benefits {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
+    }
+
+    .benefit-item {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: center;
+    }
+
+    .btn-primary,
+    .btn-whatsapp {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* Mobile Services Grid */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .service-card {
+        padding: var(--spacing-md);
+        min-height: 200px;
+        text-align: center;
+    }
+
+    .service-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .service-emoji {
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile Process Steps */
+@media (max-width: 768px) {
+    .process-steps-horizontal {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .step-horizontal {
+        padding: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .step-horizontal .step-number {
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .step-horizontal h3 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .step-horizontal p {
+        font-size: var(--font-size-sm);
+        line-height: 1.5;
+    }
+}
+
+/* Mobile Contact Section */
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+
+    .contact-info {
+        order: 2;
+        text-align: center;
+    }
+
+    .contact-form {
+        order: 1;
+        padding: var(--spacing-lg);
+    }
+
+    .contact-methods {
+        gap: var(--spacing-md);
+    }
+
+    .contact-method {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+
+    .contact-method i {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .footer-section ul {
+        gap: var(--spacing-xs);
+    }
+
+    .footer-section a {
+        padding: var(--spacing-xs) 0;
+        font-size: var(--font-size-sm);
+    }
+
+    .social-links {
+        justify-content: center;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Performance Optimizations */
+@media (max-width: 768px) {
+    /* Reduce animations on mobile */
+    .hero-img {
+        animation: none;
+    }
+
+    .floating-orb {
+        display: none;
+    }
+
+    .bg-circle {
+        display: none;
+    }
+
+    /* Optimize scroll performance */
+    .navbar {
+        transform: none;
+    }
+
+    /* Reduce backdrop blur for better performance */
+    .contact-form,
+    .service-card,
+    .step-horizontal {
+        backdrop-filter: blur(10px);
+    }
+}
+
+/* Very Small Screens (320px) */
+@media (max-width: 380px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-whatsapp {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+
+    .service-card {
+        padding: var(--spacing-sm);
+        min-height: 180px;
+    }
+
+    .contact-form {
+        padding: var(--spacing-md);
+    }
+
+    .form-row {
+        gap: var(--spacing-sm);
+    }
+}
+
+/* Landscape Mobile Fix */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero-visual {
+        height: 250px;
+    }
+
+    .hero-img {
+        max-height: 200px;
+    }
+}
+
+/* Prevent zoom on form inputs (iOS) */
+@media (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Improve touch scrolling */
+body {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scroll indicator on mobile */
+@media (max-width: 768px) {
+    .scroll-progress {
+        display: none;
+    }
+}
