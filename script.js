@@ -811,15 +811,14 @@ function initializeSoundEffects() {
 }
 
 // Enhanced Navigation with WOW effects
-// ZASTĄP FUNKCJĘ initializeNavigation() W script.js
+// ===== ZASTĄP FUNKCJĘ initializeNavigation() W script.js =====
 
 function initializeNavigation() {
-    // Get elements
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const navbar = document.querySelector('.navbar');
     
-    console.log('Nav elements:', { navToggle, navMenu, navbar }); // Debug
+    console.log('Navigation elements:', { navToggle, navMenu, navbar });
 
     // Mobile menu toggle
     if (navToggle && navMenu) {
@@ -827,17 +826,31 @@ function initializeNavigation() {
             e.preventDefault();
             e.stopPropagation();
             
-            console.log('Toggle clicked'); // Debug
+            console.log('Toggle clicked');
             
             // Toggle classes
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
+            const isActive = navMenu.classList.contains('active');
             
-            console.log('Menu active:', navMenu.classList.contains('active')); // Debug
+            if (isActive) {
+                // Close menu
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                console.log('Menu closed');
+            } else {
+                // Open menu
+                navMenu.classList.add('active');
+                navToggle.classList.add('active');
+                document.body.classList.add('menu-open');
+                console.log('Menu opened');
+            }
+            
+            console.log('Menu active:', navMenu.classList.contains('active'));
         });
     } else {
         console.error('Navigation elements not found!');
+        console.error('navToggle:', navToggle);
+        console.error('navMenu:', navMenu);
     }
 
     // Close menu when clicking on links
@@ -845,7 +858,7 @@ function initializeNavigation() {
         const navLinks = navMenu.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                console.log('Nav link clicked'); // Debug
+                console.log('Nav link clicked:', this.getAttribute('href'));
                 
                 // Close menu
                 navMenu.classList.remove('active');
@@ -871,7 +884,7 @@ function initializeNavigation() {
             !navMenu.contains(e.target) &&
             navMenu.classList.contains('active')) {
             
-            console.log('Clicked outside menu'); // Debug
+            console.log('Clicked outside menu - closing');
             navMenu.classList.remove('active');
             navToggle.classList.remove('active');
             document.body.classList.remove('menu-open');
@@ -881,12 +894,77 @@ function initializeNavigation() {
     // Handle escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
-            console.log('Escape pressed'); // Debug
+            console.log('Escape pressed - closing menu');
             navMenu.classList.remove('active');
             if (navToggle) navToggle.classList.remove('active');
             document.body.classList.remove('menu-open');
         }
     });
+
+    // Enhanced smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80;
+                smoothScrollTo(offsetTop, 1000);
+            }
+        });
+    });
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+        if (navMenu) navMenu.classList.remove('active');
+        if (navToggle) navToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        console.log('Window resized to desktop - menu closed');
+    }
+});
+
+// Smooth scroll function
+function smoothScrollTo(target, duration) {
+    const start = window.pageYOffset;
+    const distance = target - start;
+    let startTime = null;
+    
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, start, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+    
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Debug function - call this in console to check menu state
+function debugMenu() {
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    console.log('=== MENU DEBUG ===');
+    console.log('navToggle element:', navToggle);
+    console.log('navMenu element:', navMenu);
+    console.log('navMenu has active class:', navMenu?.classList.contains('active'));
+    console.log('navToggle has active class:', navToggle?.classList.contains('active'));
+    console.log('body has menu-open class:', document.body.classList.contains('menu-open'));
+    console.log('Window width:', window.innerWidth);
+}
 
     // Enhanced smooth scrolling for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
