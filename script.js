@@ -811,18 +811,150 @@ function initializeSoundEffects() {
 }
 
 // Enhanced Navigation with WOW effects
+// ZASTĄP FUNKCJĘ initializeNavigation() W script.js
+
 function initializeNavigation() {
-    // Mobile menu toggle with animation
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
+    // Get elements
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navbar = document.querySelector('.navbar');
+    
+    console.log('Nav elements:', { navToggle, navMenu, navbar }); // Debug
+
+    // Mobile menu toggle
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('Toggle clicked'); // Debug
+            
+            // Toggle classes
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
-            
-            // Add body scroll lock
             document.body.classList.toggle('menu-open');
+            
+            console.log('Menu active:', navMenu.classList.contains('active')); // Debug
+        });
+    } else {
+        console.error('Navigation elements not found!');
+    }
+
+    // Close menu when clicking on links
+    if (navMenu) {
+        const navLinks = navMenu.querySelectorAll('a[href^="#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                console.log('Nav link clicked'); // Debug
+                
+                // Close menu
+                navMenu.classList.remove('active');
+                if (navToggle) navToggle.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                
+                // Smooth scroll
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offsetTop = target.offsetTop - 80;
+                    smoothScrollTo(offsetTop, 1000);
+                }
+            });
         });
     }
 
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navToggle && navMenu && 
+            !navToggle.contains(e.target) && 
+            !navMenu.contains(e.target) &&
+            navMenu.classList.contains('active')) {
+            
+            console.log('Clicked outside menu'); // Debug
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu && navMenu.classList.contains('active')) {
+            console.log('Escape pressed'); // Debug
+            navMenu.classList.remove('active');
+            if (navToggle) navToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Enhanced smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80;
+                smoothScrollTo(offsetTop, 1000);
+            }
+        });
+    });
+}
+
+// Make sure smooth scroll function exists
+function smoothScrollTo(target, duration) {
+    const start = window.pageYOffset;
+    const distance = target - start;
+    let startTime = null;
+    
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, start, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+    
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+    
+    requestAnimationFrame(animation);
+}
+
+// Handle window resize
+window.addEventListener('resize', function() {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+        if (navMenu) navMenu.classList.remove('active');
+        if (navToggle) navToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+});
+
+// Add debug info
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, checking navigation elements...');
+    
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    
+    console.log('navToggle found:', !!navToggle);
+    console.log('navMenu found:', !!navMenu);
+    
+    if (!navToggle) {
+        console.error('navToggle element not found! Check if ID="navToggle" exists in HTML');
+    }
+    if (!navMenu) {
+        console.error('navMenu element not found! Check if ID="navMenu" exists in HTML');
+    }
+});
     // Close menu when clicking on links
     document.querySelectorAll('.nav-menu a[href^="#"]').forEach(link => {
         link.addEventListener('click', function() {
