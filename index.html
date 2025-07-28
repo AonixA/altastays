@@ -360,79 +360,112 @@
     </section>
 
     <!-- Enhanced Contact Section -->
-    <section id="contato" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2 data-translate="contact-title">Pronto para começar?</h2>
-                    <p data-translate="contact-subtitle">Entre em contato e descubra quanto seu imóvel pode render</p>
-                    <div class="contact-methods">
-                        <a href="https://wa.me/5511981480492" class="contact-method whatsapp">
-                            <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <strong>WhatsApp</strong>
-                                <span>(11) 98148-0492</span>
-                            </div>
-                        </a>
-                        <a href="tel:+5511981480492" class="contact-method phone">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <strong data-translate="contact-phone">Telefone</strong>
-                                <span>(11) 98148-0492</span>
-                            </div>
-                        </a>
-                        <a href="mailto:contato@altastays.com.br" class="contact-method email">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong>
-                                <span>contato@altastays.com.br</span>
-                            </div>
-                        </a>
-                        <div class="contact-method location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong data-translate="contact-location">Localização</strong>
-                                <span>São Paulo, SP</span>
-                            </div>
+   <!-- ZAKTUALIZOWANA SEKCJA KONTAKT - ZASTĄP W SWOIM index.html -->
+<section id="contato" class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2 data-translate="contact-title">Pronto para começar?</h2>
+                <p data-translate="contact-subtitle">Entre em contato e descubra quanto seu imóvel pode render</p>
+                <div class="contact-methods">
+                    <a href="https://wa.me/5511981480492" class="contact-method whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <span>(11) 98148-0492</span>
+                        </div>
+                    </a>
+                    <a href="tel:+5511981480492" class="contact-method phone">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong data-translate="contact-phone">Telefone</strong>
+                            <span>(11) 98148-0492</span>
+                        </div>
+                    </a>
+                    <a href="mailto:contato@altastays.com.br" class="contact-method email">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong>
+                            <span>contato@altastays.com.br</span>
+                        </div>
+                    </a>
+                    <div class="contact-method location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong data-translate="contact-location">Localização</strong>
+                            <span>São Paulo, SP</span>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" required>
-                            <label for="name" data-translate="form-name">Nome completo</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" required>
-                            <label for="email" data-translate="form-email">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" required>
-                            <label for="phone" data-translate="form-phone">Telefone</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="property-type" name="property-type" required>
-                                <option value="" data-translate="form-property-select">Selecione o tipo de imóvel</option>
-                                <option value="apartamento" data-translate="form-apartment">Apartamento</option>
-                                <option value="casa" data-translate="form-house">Casa</option>
-                                <option value="studio" data-translate="form-studio">Studio</option>
-                                <option value="cobertura" data-translate="form-penthouse">Cobertura</option>
-                            </select>
-                            <label for="property-type" data-translate="form-property-type">Tipo de imóvel</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" rows="4"></textarea>
-                            <label for="message" data-translate="form-message">Mensagem (opcional)</label>
-                        </div>
-                        <button type="submit" class="btn-primary" data-translate="form-submit">
-                            Quero saber mais
-                        </button>
-                    </form>
-                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name" data-translate="form-name">Nome completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email" data-translate="form-email">Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder=" " required>
+                        <label for="phone" data-translate="form-phone">Telefone (ex: 11987654321)</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="property-type" name="property-type" required>
+                            <option value="" disabled selected data-translate="form-property-select">Selecione o tipo de imóvel</option>
+                            <option value="apartamento" data-translate="form-apartment">Apartamento</option>
+                            <option value="casa" data-translate="form-house">Casa</option>
+                            <option value="studio" data-translate="form-studio">Studio</option>
+                            <option value="cobertura" data-translate="form-penthouse">Cobertura</option>
+                            <option value="loft">Loft</option>
+                            <option value="kitnet">Kitnet</option>
+                        </select>
+                        <label for="property-type" data-translate="form-property-type">Tipo de imóvel</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="property-location" name="property-location" required>
+                            <option value="" disabled selected>Selecione a região do imóvel</option>
+                            <option value="centro">Centro</option>
+                            <option value="vila-madalena">Vila Madalena</option>
+                            <option value="itaim-bibi">Itaim Bibi</option>
+                            <option value="jardins">Jardins</option>
+                            <option value="moema">Moema</option>
+                            <option value="pinheiros">Pinheiros</option>
+                            <option value="brooklin">Brooklin</option>
+                            <option value="vila-olimpia">Vila Olímpia</option>
+                            <option value="morumbi">Morumbi</option>
+                            <option value="liberdade">Liberdade</option>
+                            <option value="bela-vista">Bela Vista</option>
+                            <option value="consolacao">Consolação</option>
+                            <option value="outros">Outras regiões</option>
+                        </select>
+                        <label for="property-location">Região do imóvel</label>
+                    </div>
+                    <div class="form-group">
+                        <select id="bedrooms" name="bedrooms" required>
+                            <option value="" disabled selected>Quantos quartos tem o imóvel?</option>
+                            <option value="studio">Studio (sem quarto separado)</option>
+                            <option value="1">1 quarto</option>
+                            <option value="2">2 quartos</option>
+                            <option value="3">3 quartos</option>
+                            <option value="4">4 ou mais quartos</option>
+                        </select>
+                        <label for="bedrooms">Número de quartos</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" placeholder=" "></textarea>
+                        <label for="message" data-translate="form-message">Mensagem adicional (opcional)</label>
+                    </div>
+                    <button type="submit" class="btn-primary" data-translate="form-submit">
+                        Quero saber mais
+                    </button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Enhanced Footer -->
     <footer class="footer">
