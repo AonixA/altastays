@@ -1,6 +1,8 @@
 // ENHANCED WOW EFFECTS JAVASCRIPT - Replace your existing script.js
 
 // Translations (existing)
+// ZAKTUALIZOWANE TŁUMACZENIA - ZASTĄP W SEKCJI translations W script.js
+
 const translations = {
     pt: {
         // Navigation
@@ -80,21 +82,21 @@ const translations = {
         'calc-result-text': 'Seu imóvel pode gerar aproximadamente',
         'calc-result-month': 'por mês',
         
-        // Contact Section
+        // Contact Section - ZAKTUALIZOWANE
         'contact-title': 'Pronto para começar?',
         'contact-subtitle': 'Entre em contato e descubra quanto seu imóvel pode render',
         'contact-phone': 'Telefone',
         'contact-location': 'Localização',
         'form-name': 'Nome completo',
         'form-email': 'Email',
-        'form-phone': 'Telefone',
+        'form-phone': 'Telefone (ex: 11987654321)',
         'form-property-select': 'Selecione o tipo de imóvel',
         'form-apartment': 'Apartamento',
         'form-house': 'Casa',
         'form-studio': 'Studio',
         'form-penthouse': 'Cobertura',
         'form-property-type': 'Tipo de imóvel',
-        'form-message': 'Mensagem (opcional)',
+        'form-message': 'Mensagem adicional (opcional)',
         'form-submit': 'Quero saber mais',
         'form-success': 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
         'form-error': 'Erro ao enviar mensagem. Tente novamente.',
@@ -191,21 +193,21 @@ const translations = {
         'calc-result-text': 'Your property can generate approximately',
         'calc-result-month': 'per month',
         
-        // Contact Section
+        // Contact Section - ZAKTUALIZOWANE
         'contact-title': 'Ready to start?',
         'contact-subtitle': 'Get in touch and discover how much your property can earn',
         'contact-phone': 'Phone',
         'contact-location': 'Location',
         'form-name': 'Full name',
         'form-email': 'Email',
-        'form-phone': 'Phone',
+        'form-phone': 'Phone (ex: 11987654321)',
         'form-property-select': 'Select property type',
         'form-apartment': 'Apartment',
         'form-house': 'House',
         'form-studio': 'Studio',
         'form-penthouse': 'Penthouse',
         'form-property-type': 'Property type',
-        'form-message': 'Message (optional)',
+        'form-message': 'Additional message (optional)',
         'form-submit': 'I want to know more',
         'form-success': 'Message sent successfully! We will contact you soon.',
         'form-error': 'Error sending message. Please try again.',
@@ -224,6 +226,7 @@ const translations = {
         'footer-social': 'Social Media',
         'footer-rights': 'All rights reserved.'
     }
+
 };
 
 // Current language
@@ -1216,6 +1219,8 @@ function simulateFormSubmission(data) {
     });
 }
 
+// POPRAWKA NUMERU WHATSAPP - ZASTĄP FUNKCJĘ createWhatsAppMessage W script.js
+
 function createWhatsAppMessage(data) {
     const messages = {
         pt: `Olá! Tenho interesse em transformar meu imóvel em renda passiva.
@@ -1225,6 +1230,8 @@ Nome: ${data.name}
 Email: ${data.email}
 Telefone: ${data.phone}
 Tipo de imóvel: ${data['property-type'] || 'Não informado'}
+Região: ${data['property-location'] || 'Não informada'}
+Quartos: ${data.bedrooms || 'Não informado'}
 
 ${data.message ? `Mensagem: ${data.message}` : ''}
 
@@ -1237,6 +1244,8 @@ Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone}
 Property type: ${data['property-type'] || 'Not specified'}
+Region: ${data['property-location'] || 'Not specified'}
+Bedrooms: ${data.bedrooms || 'Not specified'}
 
 ${data.message ? `Message: ${data.message}` : ''}
 
@@ -1244,12 +1253,16 @@ Looking forward to hearing from you.`
     };
     
     const message = encodeURIComponent(messages[currentLang]);
-    const whatsappUrl = `https://wa.me/5511987654321?text=${message}`;
+    // POPRAWIONY NUMER WHATSAPP: +55 11 98148-0492
+    const whatsappUrl = `https://wa.me/5511981480492?text=${message}`;
     
     setTimeout(() => {
         window.open(whatsappUrl, '_blank');
     }, 2000);
 }
+
+// DODATKOWO - POPRAW TAKŻE WSZYSTKIE LINKI WHATSAPP W PLIKU
+// Znajdź i zastąp wszystkie wystąpienia starego numeru nowym numerem
 
 function showMessage(text, type) {
     const existingMessage = document.querySelector('.form-message');
