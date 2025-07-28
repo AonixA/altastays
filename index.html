@@ -361,6 +361,7 @@
 
     <!-- Enhanced Contact Section -->
    <!-- ZAKTUALIZOWANA SEKCJA KONTAKT - ZASTĄP W SWOIM index.html -->
+<!-- UPROSZCZONY FORMULARZ KONTAKTOWY - ZASTĄP SEKCJĘ KONTAKT W index.html -->
 <section id="contato" class="contact">
     <div class="container">
         <div class="contact-content">
@@ -400,66 +401,66 @@
             </div>
             <div class="contact-form">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder=" " required>
-                        <label for="name" data-translate="form-name">Nome completo</label>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Nome completo *</label>
+                        </div>
+                        <div class="form-field">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Seu email *</label>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder=" " required>
-                        <label for="email" data-translate="form-email">Email</label>
+                    
+                    <div class="form-row">
+                        <div class="form-field">
+                            <input type="tel" id="phone" name="phone" required>
+                            <label for="phone">Telefone (11987654321) *</label>
+                        </div>
+                        <div class="form-field">
+                            <select id="property-type" name="property-type" required>
+                                <option value="">Tipo de imóvel *</option>
+                                <option value="apartamento">Apartamento</option>
+                                <option value="casa">Casa</option>
+                                <option value="studio">Studio</option>
+                                <option value="cobertura">Cobertura</option>
+                                <option value="loft">Loft</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder=" " required>
-                        <label for="phone" data-translate="form-phone">Telefone (ex: 11987654321)</label>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <select id="property-location" name="property-location" required>
+                                <option value="">Região do imóvel *</option>
+                                <option value="centro">Centro</option>
+                                <option value="vila-madalena">Vila Madalena</option>
+                                <option value="itaim-bibi">Itaim Bibi</option>
+                                <option value="jardins">Jardins</option>
+                                <option value="moema">Moema</option>
+                                <option value="pinheiros">Pinheiros</option>
+                                <option value="outros">Outras regiões</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <select id="bedrooms" name="bedrooms" required>
+                                <option value="">Quantos quartos? *</option>
+                                <option value="studio">Studio</option>
+                                <option value="1">1 quarto</option>
+                                <option value="2">2 quartos</option>
+                                <option value="3">3 quartos</option>
+                                <option value="4">4+ quartos</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <select id="property-type" name="property-type" required>
-                            <option value="" disabled selected data-translate="form-property-select">Selecione o tipo de imóvel</option>
-                            <option value="apartamento" data-translate="form-apartment">Apartamento</option>
-                            <option value="casa" data-translate="form-house">Casa</option>
-                            <option value="studio" data-translate="form-studio">Studio</option>
-                            <option value="cobertura" data-translate="form-penthouse">Cobertura</option>
-                            <option value="loft">Loft</option>
-                            <option value="kitnet">Kitnet</option>
-                        </select>
-                        <label for="property-type" data-translate="form-property-type">Tipo de imóvel</label>
+
+                    <div class="form-field full-width">
+                        <textarea id="message" name="message" rows="3" placeholder="Mensagem adicional (opcional)"></textarea>
                     </div>
-                    <div class="form-group">
-                        <select id="property-location" name="property-location" required>
-                            <option value="" disabled selected>Selecione a região do imóvel</option>
-                            <option value="centro">Centro</option>
-                            <option value="vila-madalena">Vila Madalena</option>
-                            <option value="itaim-bibi">Itaim Bibi</option>
-                            <option value="jardins">Jardins</option>
-                            <option value="moema">Moema</option>
-                            <option value="pinheiros">Pinheiros</option>
-                            <option value="brooklin">Brooklin</option>
-                            <option value="vila-olimpia">Vila Olímpia</option>
-                            <option value="morumbi">Morumbi</option>
-                            <option value="liberdade">Liberdade</option>
-                            <option value="bela-vista">Bela Vista</option>
-                            <option value="consolacao">Consolação</option>
-                            <option value="outros">Outras regiões</option>
-                        </select>
-                        <label for="property-location">Região do imóvel</label>
-                    </div>
-                    <div class="form-group">
-                        <select id="bedrooms" name="bedrooms" required>
-                            <option value="" disabled selected>Quantos quartos tem o imóvel?</option>
-                            <option value="studio">Studio (sem quarto separado)</option>
-                            <option value="1">1 quarto</option>
-                            <option value="2">2 quartos</option>
-                            <option value="3">3 quartos</option>
-                            <option value="4">4 ou mais quartos</option>
-                        </select>
-                        <label for="bedrooms">Número de quartos</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="4" placeholder=" "></textarea>
-                        <label for="message" data-translate="form-message">Mensagem adicional (opcional)</label>
-                    </div>
-                    <button type="submit" class="btn-primary" data-translate="form-submit">
-                        Quero saber mais
+
+                    <button type="submit" class="btn-primary btn-submit">
+                        <span>Quero saber mais</span>
+                        <i class="fas fa-arrow-right"></i>
                     </button>
                 </form>
             </div>
